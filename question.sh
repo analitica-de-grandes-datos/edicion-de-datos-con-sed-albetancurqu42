@@ -41,3 +41,25 @@
 #
 #  >>> Escriba su codigo a partir de este punto <<<
 #
+
+sed '12 s/\([0-9]\/\)/0\1/ g' data.csv > salida1.csv # poner en el mismo formato de día y mes a la línea 12
+
+sed 's/\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9]\);/\1\/\2\/20\3;/1g' salida1.csv > salida2.csv #Para formatear la fecha
+
+sed 's/\([0-9][0-9]\)\/\([0-9][0-9]\)\/\([0-9][0-9][0-9][0-9]\);/\3-\2-\1;/1g' salida2.csv > salida3.csv
+
+sed -e 's/\(.*\)/\U\1/' salida3.csv > salida4.csv  # Cambiar minusculas por mayusculas
+
+sed 's/;N/;\\N/g' salida4.csv > salida5.csv # Cambiar N por \N
+
+sed 's/;;/;\\N;/g' salida5.csv > salida6.csv
+
+#sed 's/N;/\\N;/g' salida6.csv > salida7.csv
+
+sed 's/;$/;\\N/' salida6.csv > salida7.csv
+
+sed 's/,/./g' salida7.csv > salida8.csv
+
+sed 's/;/,/g' salida8.csv
+
+rm salida*.csv
