@@ -24,8 +24,6 @@ with open("output.csv", "r", encoding="utf8") as f:
     lines = f.readlines()
 
 if len(lines) != len(expected):
-    print(len(lines))
-    print(len(expected))
     raise Exception("Wrong number of lines")
 
 
